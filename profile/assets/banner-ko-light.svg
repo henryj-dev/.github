@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="henryj-dev — DNS, 프록시, 방화벽을 위한 선언형 컨트롤 플레인">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f2f5f9"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0969da" stop-opacity="0.28"/>
+      <stop offset="60%" stop-color="#0969da" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#0969da" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0969da"/>
+      <stop offset="100%" stop-color="#8250df"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="300" rx="12" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="1199" height="299" rx="12" fill="none" stroke="#d0d7de"/>
+
+  <!-- orbital system -->
+  <g transform="translate(955 150)">
+    <circle r="135" fill="url(#glow)"/>
+    <g fill="none" stroke="#0969da" stroke-opacity="0.32" stroke-width="1.25">
+      <ellipse rx="132" ry="52" transform="rotate(-18)"/>
+      <ellipse rx="104" ry="40" transform="rotate(26)"/>
+      <ellipse rx="72"  ry="28" transform="rotate(-52)"/>
+    </g>
+    <circle r="11" fill="#0969da"/>
+    <circle r="20" fill="none" stroke="#0969da" stroke-opacity="0.35" stroke-width="1.25"/>
+    <g transform="rotate(-18)"><circle cx="132" cy="0" r="6.5" fill="#8250df"/></g>
+    <g transform="rotate(26)"><circle cx="-104" cy="0" r="5.5" fill="#0969da"/></g>
+    <g transform="rotate(-52)"><circle cx="72" cy="0" r="4.5" fill="#0969da" fill-opacity="0.6"/></g>
+  </g>
+
+  <!-- wordmark -->
+  <g font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', 'Noto Sans CJK KR', Roboto, Helvetica, Arial, sans-serif">
+    <text x="80" y="106" fill="#57606a" font-size="15" font-weight="600" letter-spacing="3.2">인프라 컨트롤 플레인</text>
+    <text x="80" y="180" fill="#0d1117" font-size="62" font-weight="700" letter-spacing="-1.5">henryj-dev</text>
+    <rect x="82" y="200" width="86" height="4" rx="2" fill="url(#rule)"/>
+    <text x="80" y="242" fill="#57606a" font-size="21" font-weight="450">DNS, 프록시, 방화벽을 선언형 상태로 관리합니다.</text>
+  </g>
+</svg>

@@ -5,7 +5,8 @@ Organization-level defaults for [**henryj-dev**](https://github.com/henryj-dev).
 | Path | What it does |
 |---|---|
 | [`profile/README.md`](profile/README.md) | Renders as the organization's public profile page at [github.com/henryj-dev](https://github.com/henryj-dev) |
-| `profile/assets/` | Banner artwork for the profile, in light and dark variants |
+| [`profile/README.ko.md`](profile/README.ko.md) | Korean translation of the profile page |
+| `profile/assets/` | Banner artwork, in light and dark variants for each language |
 
 ## Editing the profile page
 
@@ -20,6 +21,21 @@ the default branch — there is no build step. Notes for editing it:
 - **Markdown inside block HTML does not render** on GitHub. Inside `<table>`,
   write plain HTML.
 - Mermaid code fences render natively and follow the reader's GitHub theme.
+
+## Translations
+
+GitHub has no locale negotiation for READMEs. It renders `profile/README.md` as
+the profile page and nothing else, so a translation cannot be served
+automatically — the two files are linked to each other by a toggle near the top
+of each, and readers switch by hand.
+
+That means the English page is the one visitors land on, and the Korean page is
+reached at its file URL. Keep them in sync: a change to one is only half done
+until the other matches. Each language has its own banner pair
+(`banner-*.svg` for English, `banner-ko-*.svg` for Korean), so a wording change
+in the tagline means regenerating two SVGs, not one.
+
+The toggle links must be absolute URLs for the same reason images must be.
 
 ## Other things this repository can hold
 

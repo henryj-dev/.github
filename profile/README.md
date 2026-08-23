@@ -14,6 +14,10 @@
 <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white"></a>
 <img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-8250df?style=flat-square">
 
+<br><br>
+
+<b>English</b> · <a href="https://github.com/henryj-dev/.github/blob/main/profile/README.ko.md">한국어</a>
+
 </div>
 
 ---
