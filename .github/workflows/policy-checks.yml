@@ -1,0 +1,135 @@
+# 정책 층 — **다섯 저장소가 같은 것을 묻는다**
+#
+# 각 저장소가 무엇을 만드는지는 다르다(프록시·메일·DNS·웹). 그건 저마다의 검증 층이
+# 답한다. 반면 "자격증명이 이력에 들어왔는가", "워크플로 자체가 안전한가", "이 PR 이
+# 무엇을 끌고 들어오는가" 는 **저장소가 무엇이든 같은 질문**이다. 그 층을 여기 한 벌 둔다.
+#
+# 부르는 쪽은 이렇게 쓴다.
+#
+#     jobs:
+#       policy:
+#         uses: henryj-dev/.github/.github/workflows/policy-checks.yml@<커밋 SHA>
+#         permissions:
+#           contents: read
+#           pull-requests: write     # dependency-review 가 PR 에 이유를 적는다
+#         secrets:
+#           GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+#       gate:
+#         needs: [..., policy]
+#
+# **재사용 워크플로는 부르는 저장소의 맥락에서 돈다.** 체크아웃도 그 저장소를 받고
+# `.gitleaks.toml` 도 그쪽 것을 읽는다 — 예외 목록은 각 저장소가 자기 근거와 함께 갖는다.
+#
+# ⚠️ 부르는 쪽은 **반드시 커밋 SHA 로** 박는다. `@main` 은 움직이는 참조이고, 그러면 이
+#    파일을 고치는 것만으로 다섯 저장소의 게이트가 동시에 바뀐다. dependabot 이 SHA 를
+#    갱신해 주므로 낡을 걱정은 없다.
+
+name: policy checks
+
+on:
+  workflow_call:
+    secrets:
+      GITLEAKS_LICENSE:
+        description: "조직 소유 저장소에 필요한 gitleaks-action 라이선스"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  # 자격증명이 이력에 들어왔는가. **지워진 커밋에 남은 것은 지워지지 않는다** —
+  # 공개 저장소에서 한 번 밀린 값은 밀린 순간 이미 밖에 있다.
+  secret-scan:
+    name: secret scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+          # **설정을 못 박는다.** 자동 탐지에 맡기면 `.gitleaks.toml` 이 안 읽혀도 조용히
+          # 통과하고, 그러면 예외가 아니라 검사가 사라진 것을 통과로 읽는다.
+          GITLEAKS_CONFIG: .gitleaks.toml
+
+      # **두 번째 눈 — 이력 전체.** 위의 액션은 이벤트 범위만 본다(push 면 밀린 커밋,
+      # PR 이면 PR 커밋). 그것만으로는 이미 이력에 있는 것을 다시 훑지 않는다 — 새 규칙이
+      # 추가돼 어제까지 조용하던 옛 커밋이 오늘 걸리는 경우를 놓친다.
+      #
+      # `!cancelled()` 로 걸어 위가 빨개져도 반드시 돈다. 한쪽 실패가 다른 쪽 신호를
+      # 가리면 무엇이 깨졌는지 한 번에 못 본다.
+      - name: gitleaks (이력 전체)
+        if: ${{ !cancelled() }}
+        env:
+          GITLEAKS_VERSION: "8.30.1"
+          GITLEAKS_SHA256: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+        run: |
+          set -euo pipefail
+          url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl -fsSL --retry 3 -o /tmp/gitleaks.tgz "$url"
+          echo "${GITLEAKS_SHA256}  /tmp/gitleaks.tgz" | sha256sum -c -
+          tar xzf /tmp/gitleaks.tgz -C /tmp gitleaks
+          /tmp/gitleaks git --no-banner --redact --exit-code 1 --config .gitleaks.toml .
+
+  # **워크플로 자체가 공격면이다.** 러너는 밖에서 온 코드를 실행하고, `${{ }}` 가
+  # `run:` 본문에 박히면 그게 곧 셸 코드가 된다. 사람은 리뷰에서 반드시 놓친다.
+  workflow-audit:
+    name: workflow audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: actionlint
+        env:
+          ACTIONLINT_VERSION: "1.7.12"
+          ACTIONLINT_SHA256: "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+        run: |
+          set -euo pipefail
+          url="https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          curl -fsSL --retry 3 -o /tmp/actionlint.tgz "$url"
+          echo "${ACTIONLINT_SHA256}  /tmp/actionlint.tgz" | sha256sum -c -
+          tar xzf /tmp/actionlint.tgz -C /tmp actionlint
+          /tmp/actionlint -color .github/workflows/*.yml
+      - name: zizmor
+        env:
+          ZIZMOR_VERSION: "1.29.0"
+          ZIZMOR_SHA256: "dd96df044a6e8538d5f423790f453bdd03d49e5b2bcc38214acc41a2f1297839"
+        run: |
+          set -euo pipefail
+          url="https://github.com/zizmorcore/zizmor/releases/download/v${ZIZMOR_VERSION}/zizmor-x86_64-unknown-linux-gnu.tar.gz"
+          curl -fsSL --retry 3 -o /tmp/zizmor.tgz "$url"
+          echo "${ZIZMOR_SHA256}  /tmp/zizmor.tgz" | sha256sum -c -
+          tar xzf /tmp/zizmor.tgz -C /tmp
+          /tmp/zizmor --no-progress --persona=regular .github/workflows
+
+  # **PR 이 무엇을 끌고 들어오는지 본다.** 잠금 파일을 그대로 세우는 설치는 새로 들어온
+  # 패키지에 대해 아무 말도 하지 않는다 — 초록이 곧 "이 의존성이 괜찮다" 로 읽히는 자리다.
+  dependency-review:
+    name: dependency review
+    # PR 에서만 뜻이 있다. 기준점이 있어야 "무엇이 새로 들어왔는가" 를 물을 수 있다.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          # `moderate` 부터 막으면 전이 의존성의 소음에 파묻힌다. 막는 선은
+          # **되돌릴 수 없는 것**에 맞춘다.
+          fail-on-severity: high
+          # 카피레프트를 거부한다. 정말 필요한 것이 걸리면 여기서 예외를 다는 대신
+          # **왜 필요한지를 PR 에 적고** 이 줄을 고친다.
+          deny-licenses: AGPL-1.0-only, AGPL-1.0-or-later, AGPL-3.0-only, AGPL-3.0-or-later, GPL-2.0-only, GPL-2.0-or-later, GPL-3.0-only, GPL-3.0-or-later, SSPL-1.0
+          comment-summary-in-pr: on-failure

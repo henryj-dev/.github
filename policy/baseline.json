@@ -1,0 +1,32 @@
+{
+  "//": "다섯 저장소가 같아야 하는 것의 기준. ruleset-drift.yml 이 이 파일과 실물을 견준다.",
+  "repos": ["barycenter", "heliopause", "ionosphere", "lodestar", "parallax"],
+  "ruleset": {
+    "name": "main",
+    "enforcement": "active",
+    "bypass_actors": 0,
+    "rule_types": ["deletion", "non_fast_forward", "required_linear_history", "pull_request", "required_status_checks"],
+    "required_status_checks": ["gate", "codeql"],
+    "strict_required_status_checks_policy": true,
+    "allowed_merge_methods": ["squash"],
+    "required_review_thread_resolution": true
+  },
+  "settings": {
+    "allow_merge_commit": false,
+    "allow_rebase_merge": false,
+    "allow_squash_merge": true,
+    "delete_branch_on_merge": true
+  },
+  "security": {
+    "secret_scanning": "enabled",
+    "secret_scanning_push_protection": "enabled",
+    "dependabot_security_updates": "enabled"
+  },
+  "legacy_branch_protection": "none",
+  "exceptions": {
+    "heliopause": {
+      "required_status_checks_extra": ["trusted site-data leak gate"],
+      "//": "pull_request_target 로 도는 격리 스캐너. 이 저장소에만 있는 축이라 required 에 하나 더 붙는다."
+    }
+  }
+}
