@@ -1,0 +1,115 @@
+# 도구 신선도 — **스캐너가 낡는 것은 조용한 실패다**
+#
+# `policy-checks.yml` 은 gitleaks·actionlint·zizmor 를 **버전과 체크섬으로 박아** 받는다.
+# 그게 공급망 관점에서는 옳다(받은 것이 무엇인지 우리가 정한다). 대가는 하나다 —
+# **dependabot 은 URL 로 받는 파일을 갱신하지 못한다.** 액션은 SHA 가 갱신되지만 이 셋은
+# 워크플로 안의 문자열이라 아무도 안 올리면 그대로 굳는다.
+#
+# 낡은 스캐너는 빨개지지 않는다. 새 규칙이 잡을 것을 안 잡는데 CI 는 초록이다 — 그래서
+# 여기서 **새 릴리스가 나왔다는 사실 자체**를 알린다. 올릴지는 사람이 판단한다.
+#
+# 판정 대상은 `policy-checks.yml` 한 파일이다. 다섯 저장소가 그 파일을 부르므로,
+# 거기 적힌 버전이 곧 다섯의 버전이다.
+
+name: tool freshness
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # 매주 월요일 06:00 UTC = 15:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      # 낡은 것이 있으면 이슈로 남긴다. 로그로만 알리면 아무도 안 본다.
+      issues: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 박힌 버전과 최신 릴리스를 견준다
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          wf=.github/workflows/policy-checks.yml
+          stale=""
+
+          # 도구마다: 워크플로에 박힌 버전 · 업스트림 최신 릴리스
+          check_one() {           # check_one <표시이름> <VAR 접두사> <owner/repo>
+            local name="$1" var="$2" repo="$3" pinned latest
+            pinned="$(grep -oE "${var}_VERSION: \"[0-9.]+\"" "$wf" | head -1 | grep -oE '[0-9.]+')"
+            if [ -z "$pinned" ]; then
+              echo "::error::$wf 에서 ${var}_VERSION 을 못 찾았다 — 이 검사가 대상을 잃었다"
+              exit 1
+            fi
+            latest="$(gh api "repos/$repo/releases/latest" --jq '.tag_name' | sed 's/^v//')"
+            if [ "$pinned" = "$latest" ]; then
+              printf '  %-12s %s (최신)\n' "$name" "$pinned"
+            else
+              printf '  %-12s %s → %s **새 릴리스**\n' "$name" "$pinned" "$latest"
+              stale="${stale}- \`${name}\` ${pinned} → **${latest}** — https://github.com/${repo}/releases/tag/v${latest}"$'\n'
+            fi
+          }
+
+          check_one gitleaks   GITLEAKS   gitleaks/gitleaks
+          check_one actionlint ACTIONLINT rhysd/actionlint
+          check_one zizmor     ZIZMOR     zizmorcore/zizmor
+
+          {
+            echo "stale<<EOF"
+            printf '%s' "$stale"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      # **이슈는 하나만 유지한다.** 주마다 새로 열면 읽지 않게 되고, 읽지 않는 알림은
+      # 없는 것과 같다. 낡은 것이 있으면 열거나 갱신하고, 전부 최신이면 닫는다.
+      - name: 이슈로 남긴다
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STALE: ${{ steps.check.outputs.stale }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          title="정책 층 도구가 낡았다"
+          num="$(gh issue list --repo "$REPO" --state open --search "$title in:title" \
+                   --json number --jq '.[0].number // empty')"
+
+          if [ -z "${STALE//[$'\n\t ']/}" ]; then
+            if [ -n "$num" ]; then
+              gh issue close "$num" --repo "$REPO" --comment "전부 최신이다. 새 릴리스가 나오면 다시 연다."
+              echo "닫았다: #$num"
+            else
+              echo "전부 최신 — 남길 것 없다"
+            fi
+            exit 0
+          fi
+
+          {
+            echo '`.github/workflows/policy-checks.yml` 에 박힌 버전보다 새 릴리스가 있다.'
+            echo
+            printf '%s' "$STALE"
+            echo
+            echo '올릴 때는 **버전과 SHA256 을 함께** 바꾼다. 체크섬을 안 고치면 다운로드'
+            echo '검증에서 그 자리로 실패한다 — 그게 이 방식이 주는 안전장치다.'
+            echo
+            echo '이 파일 하나가 다섯 저장소의 정책 층이므로 여기만 고치면 전부 따라온다.'
+            echo '다만 부르는 쪽은 커밋 SHA 로 박혀 있으니, dependabot 이 그 SHA 를 올려야'
+            echo '실제로 반영된다.'
+          } > /tmp/issue-body.md
+
+          if [ -n "$num" ]; then
+            gh issue edit "$num" --repo "$REPO" --body-file /tmp/issue-body.md
+            echo "갱신했다: #$num"
+          else
+            gh issue create --repo "$REPO" --title "$title" --body-file /tmp/issue-body.md
+          fi
