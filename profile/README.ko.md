@@ -66,6 +66,12 @@
 ![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-F38020?style=flat-square&logo=cloudflare&logoColor=white)
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-FF3E00?style=flat-square&logo=svelte&logoColor=white)
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/mack-erel/mack-erel/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/mack-erel/mack-erel/output/github-contribution-grid-snake.svg">
+  <img alt="GitHub 컨트리뷰션 그래프를 먹는 뱀 애니메이션" src="https://raw.githubusercontent.com/mack-erel/mack-erel/output/github-contribution-grid-snake.svg" width="100%">
+</picture>
+
 </td>
 </tr>
 </table>
