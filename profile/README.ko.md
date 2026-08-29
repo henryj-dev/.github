@@ -19,10 +19,10 @@
 
 <sub>
 <a href="#여기서-만드는-방식">철학</a> ·
+<a href="#소개">소개</a> ·
 <a href="#프로젝트">프로젝트</a> ·
 <a href="#그-외-도구">그 외 도구</a> ·
 <a href="#오픈소스-기여">기여</a> ·
-<a href="#개인-계정">개인 계정</a> ·
 <a href="#참여하기">참여하기</a>
 </sub>
 
@@ -37,6 +37,28 @@
 > 여기서 다루는 일은 대개 비슷하게 시작합니다. 중요한 무언가가 서버 어딘가에서 손으로 설정되어 있고, 왜 그렇게 되어 있는지는 그 작업을 한 사람만 알고 있는 상태. 이 프로젝트들은 그것을 읽고, 검토하고, 되돌릴 수 있는 형태로 바꿉니다.
 >
 > 주제가 무엇이든 같은 형태를 따릅니다. 원하는 상태를 선언하면, 도구가 무엇이 바뀔지 먼저 보여주고, 물러설 수 있는 방식으로 적용합니다.
+
+## 소개
+
+<table>
+<tr>
+<td width="88" align="center"><img src="https://avatars.githubusercontent.com/u/9063075?v=4" width="72" height="72" alt="mack-erel"></td>
+<td>
+
+**장효찬 (Henry Jang)** · [@mack-erel](https://github.com/mack-erel)
+
+백엔드 / 인프라 엔지니어. 이 조직은 위 도구들이 README, 라이선스, 빌드 배지까지
+갖춰졌을 때 올라오는 자리입니다. 자잘한 스크립트나 그날그날의 실험은 개인
+계정에 남아있다가, 그중 하나가 여기 올 만큼 다듬어지면 옮겨옵니다.
+
+[![Email](https://img.shields.io/badge/email-jang%40hyochan.site-24292f?style=flat-square&logo=gmail&logoColor=white)](mailto:jang@hyochan.site)
+[![Blog](https://img.shields.io/badge/blog-hyochan.site-8250df?style=flat-square&logo=rss&logoColor=white)](https://hyochan.site)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-yrneh--jang-0a66c2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yrneh-jang/)
+[![GitHub](https://img.shields.io/badge/personal-@mack--erel-0969da?style=flat-square&logo=github&logoColor=white)](https://github.com/mack-erel?tab=repositories)
+
+</td>
+</tr>
+</table>
 
 ## 여기서 만드는 방식
 
@@ -201,30 +223,6 @@ WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환
 - [#348](https://github.com/dbmail/dbmail/pull/348): dbmail·libsieve·libzdb용 RPM spec 파일 업데이트
 
 </td></tr>
-</table>
-
-<div align="center">
-<sub>· · ·</sub>
-</div>
-
-## 개인 계정
-
-<table>
-<tr>
-<td width="72" align="center"><img src="https://avatars.githubusercontent.com/u/9063075?v=4" width="56" height="56" alt="mack-erel"></td>
-<td>
-
-**[@mack-erel](https://github.com/mack-erel)** — 개인 계정
-
-이 조직은 정리된 선반입니다. README와 라이선스, 빌드 배지까지 갖춰진 것들만 여기
-올라옵니다. 작업대는 개인 계정 쪽이에요 — 자잘한 스크립트, 한 번 쓰고 마는 실험,
-아직 여기 올 만큼 다듬어지지 않은 아이디어들이 그곳에 있습니다. 그러다 어느 하나가
-자리를 잡으면, 이쪽으로 옮겨옵니다.
-
-[![Follow](https://img.shields.io/github/followers/mack-erel?style=flat-square&logo=github&label=follow&color=24292f)](https://github.com/mack-erel?tab=repositories)
-
-</td>
-</tr>
 </table>
 
 <div align="center">
