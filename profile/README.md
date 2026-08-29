@@ -156,10 +156,10 @@ Converts WHOIS responses into RFC 9083 RDAP-shaped JSON
 
 ## Upstream contributions
 
-Merged work in other people's projects, kept here as forks:
+Work in other people's projects, kept here as forks — merged unless noted otherwise:
 
 <table>
-<tr><th width="230">Repository</th><th>Merged pull requests</th></tr>
+<tr><th width="230">Repository</th><th>Pull requests</th></tr>
 <tr><td>
 
 **[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**  
@@ -168,6 +168,7 @@ Merged work in other people's projects, kept here as forks:
 </td><td>
 
 - [#14712](https://github.com/cloudflare/workers-sdk/pull/14712): miniflare — support `connect()` on remote VPC Network bindings in local dev
+- [#14900](https://github.com/cloudflare/workers-sdk/pull/14900): miniflare — support remote Hyperdrive bindings in local dev *(open)*
 
 </td></tr>
 <tr><td>
