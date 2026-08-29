@@ -157,7 +157,8 @@ WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환
 <tr><th width="230">저장소</th><th>머지된 PR</th></tr>
 <tr><td>
 
-**[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**
+**[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**  
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/mack-erel/workers-sdk)
 
 </td><td>
 
