@@ -58,8 +58,7 @@
 <table>
 <tr><td width="290">
 
-**[parallax](https://github.com/henryj-dev/parallax)**
-
+**[parallax](https://github.com/henryj-dev/parallax)**  
 [![build](https://github.com/henryj-dev/parallax/actions/workflows/check.yml/badge.svg)](https://github.com/henryj-dev/parallax/actions/workflows/check.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/parallax?style=flat-square&color=0969da&label=)
 ![Apache-2.0](https://img.shields.io/github/license/henryj-dev/parallax?style=flat-square&color=8250df&label=)
@@ -71,8 +70,7 @@ Split-horizon DNS control plane — one desired state for internal DNS and Cloud
 </td></tr>
 <tr><td>
 
-**[barycenter](https://github.com/henryj-dev/barycenter)**
-
+**[barycenter](https://github.com/henryj-dev/barycenter)**  
 [![build](https://github.com/henryj-dev/barycenter/actions/workflows/verify.yml/badge.svg)](https://github.com/henryj-dev/barycenter/actions/workflows/verify.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/barycenter?style=flat-square&color=0969da&label=)
 ![Apache-2.0](https://img.shields.io/github/license/henryj-dev/barycenter?style=flat-square&color=8250df&label=)
@@ -84,8 +82,7 @@ A control plane for nginx — HTTP, TCP, and UDP reverse proxying and load balan
 </td></tr>
 <tr><td>
 
-**[heliopause](https://github.com/henryj-dev/heliopause)**
-
+**[heliopause](https://github.com/henryj-dev/heliopause)**  
 [![build](https://github.com/henryj-dev/heliopause/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/heliopause/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/heliopause?style=flat-square&color=0969da&label=)
 ![Apache-2.0](https://img.shields.io/github/license/henryj-dev/heliopause?style=flat-square&color=8250df&label=)
@@ -97,8 +94,7 @@ A host firewall you can't lock yourself out of — declarative nftables with aut
 </td></tr>
 <tr><td>
 
-**[lodestar](https://github.com/henryj-dev/lodestar)**
-
+**[lodestar](https://github.com/henryj-dev/lodestar)**  
 [![build](https://github.com/henryj-dev/lodestar/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/lodestar/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/lodestar?style=flat-square&color=0969da&label=)
 ![MIT](https://img.shields.io/github/license/henryj-dev/lodestar?style=flat-square&color=8250df&label=)
@@ -110,8 +106,7 @@ An open-source identity provider on Cloudflare Workers — OIDC, SAML 2.0, WebAu
 </td></tr>
 <tr><td>
 
-**[ionosphere](https://github.com/henryj-dev/ionosphere)**
-
+**[ionosphere](https://github.com/henryj-dev/ionosphere)**  
 [![build](https://github.com/henryj-dev/ionosphere/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/ionosphere/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/ionosphere?style=flat-square&color=0969da&label=)
 ![MIT](https://img.shields.io/github/license/henryj-dev/ionosphere?style=flat-square&color=8250df&label=)
@@ -135,8 +130,7 @@ Smaller, standalone tools that don't need a control plane of their own:
 <table>
 <tr><td width="290">
 
-**[d1-jdbc](https://github.com/henryj-dev/d1-jdbc)**
-
+**[d1-jdbc](https://github.com/henryj-dev/d1-jdbc)**  
 [![build](https://github.com/henryj-dev/d1-jdbc/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/d1-jdbc/actions/workflows/ci.yml)
 ![Java](https://img.shields.io/github/languages/top/henryj-dev/d1-jdbc?style=flat-square&color=0969da&label=)
 ![MIT](https://img.shields.io/github/license/henryj-dev/d1-jdbc?style=flat-square&color=8250df&label=)
@@ -148,8 +142,7 @@ A JDBC driver for Cloudflare D1 — zero-dependency, REST API or self-deployed W
 </td></tr>
 <tr><td>
 
-**[whois2rdap](https://github.com/henryj-dev/whois2rdap)**
-
+**[whois2rdap](https://github.com/henryj-dev/whois2rdap)**  
 [![build](https://github.com/henryj-dev/whois2rdap/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/whois2rdap/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/whois2rdap?style=flat-square&color=0969da&label=)
 ![MIT](https://img.shields.io/github/license/henryj-dev/whois2rdap?style=flat-square&color=8250df&label=)
@@ -178,8 +171,7 @@ Merged work in other people's projects, kept here as forks:
 </td></tr>
 <tr><td>
 
-**[soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor)**
-
+**[soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor)**  
 [![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor)
 
 </td><td>
@@ -194,8 +186,7 @@ Merged work in other people's projects, kept here as forks:
 </td></tr>
 <tr><td>
 
-**[AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector)**
-
+**[AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector)**  
 [![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector)
 
 </td><td>
@@ -205,8 +196,7 @@ Merged work in other people's projects, kept here as forks:
 </td></tr>
 <tr><td>
 
-**[dbmail/dbmail](https://github.com/dbmail/dbmail)**
-
+**[dbmail/dbmail](https://github.com/dbmail/dbmail)**  
 [![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_dbmail_dbmail)
 
 </td><td>
