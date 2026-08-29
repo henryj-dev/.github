@@ -40,7 +40,7 @@
 
 ## 여기서 만드는 방식
 
-| | |
+| 원칙 | 의미 |
 |---|---|
 | **명령이 아닌 desired state** | 무엇이 참이어야 하는지를 선언합니다. 조정은 도구의 몫이며, 자신이 관리하는 대상 외에는 건드리지 않습니다. |
 | **적용 전 계획** | 모든 변경은 미리 볼 수 있습니다. 무언가 움직이기 전에 영향 범위를 확인합니다. |
@@ -160,12 +160,56 @@ WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환
 
 다른 프로젝트에 머지된 작업, fork 형태로 남겨둠:
 
-| | |
-|---|---|
-| [cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/cloudflare/workers-sdk/pull/14712) miniflare: 원격 VPC Network 바인딩 로컬 개발 지원 |
-| [soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor) | [![merged](https://img.shields.io/badge/PR_6개-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor) Kiro provider, 크레딧 기반 사용량 추적, Grok 4.6 가격 등 |
-| [AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector) 기본 IPv4 주소 프리픽스 수정 |
-| [dbmail/dbmail](https://github.com/dbmail/dbmail) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_dbmail_dbmail) RPM spec 파일 업데이트 |
+<table>
+<tr><th width="230">저장소</th><th>머지된 PR</th></tr>
+<tr><td>
+
+**[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**
+
+</td><td>
+
+- [#14712](https://github.com/cloudflare/workers-sdk/pull/14712): miniflare — 원격 VPC Network 바인딩에서 로컬 개발 시 `connect()` 지원
+
+</td></tr>
+<tr><td>
+
+**[soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor)**
+
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor)
+
+</td><td>
+
+- [#189](https://github.com/soulduse/ai-token-monitor/pull/189): Grok 4.6 가격, SuperGrok 크레딧, Linux/Windows 지원
+- [#181](https://github.com/soulduse/ai-token-monitor/pull/181): 게이트웨이가 재작성한 모델 ID의 가격·집계를 올바르게 처리
+- [#180](https://github.com/soulduse/ai-token-monitor/pull/180): 크레딧 기반 사용량 추적을 갖춘 Kiro provider 추가
+- [#179](https://github.com/soulduse/ai-token-monitor/pull/179): kiro-cli를 셸아웃하는 대신 Kiro API 직접 호출
+- [#154](https://github.com/soulduse/ai-token-monitor/pull/154): OAuth 사용량 응답의 null `resets_at` 허용 처리
+- [#143](https://github.com/soulduse/ai-token-monitor/pull/143): Kiro CLI를 API 키 기반 번역 프로바이더로 추가
+
+</td></tr>
+<tr><td>
+
+**[AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector)**
+
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector)
+
+</td><td>
+
+- [#10](https://github.com/AnimMouse/wgcf-connector/pull/10): 기본 IPv4 주소 프리픽스 `/12` → `/32` 변경 (라우팅은 `AllowedIPs`에 위임)
+
+</td></tr>
+<tr><td>
+
+**[dbmail/dbmail](https://github.com/dbmail/dbmail)**
+
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_dbmail_dbmail)
+
+</td><td>
+
+- [#348](https://github.com/dbmail/dbmail/pull/348): dbmail·libsieve·libzdb용 RPM spec 파일 업데이트
+
+</td></tr>
+</table>
 
 <div align="center">
 <sub>· · ·</sub>
