@@ -44,10 +44,32 @@
 | [**parallax**](https://github.com/henryj-dev/parallax) | 스플릿 호라이즌 DNS 컨트롤 플레인 — 내부 DNS와 Cloudflare를 하나의 desired state로 |
 | [**barycenter**](https://github.com/henryj-dev/barycenter) | nginx를 위한 컨트롤 플레인 — HTTP, TCP, UDP 리버스 프록시와 로드 밸런싱 |
 | [**heliopause**](https://github.com/henryj-dev/heliopause) | 스스로를 잠가버릴 수 없는 호스트 방화벽 — 자동 롤백을 갖춘 선언형 nftables |
+| [**lodestar**](https://github.com/henryj-dev/lodestar) | Cloudflare Workers 위에서 동작하는 오픈소스 아이덴티티 프로바이더 — OIDC, SAML 2.0, WebAuthn/Passkey, TOTP, LDAP |
+| [**ionosphere**](https://github.com/henryj-dev/ionosphere) | 처음부터 직접 만든 메일 서버 — SMTP·IMAP·POP3·JMAP·ManageSieve·LMTP, 런타임 의존성 0 |
 
 앞으로 더 추가될 예정입니다. 각 프로젝트가 무엇을 하고 어느 단계인지는 해당 저장소의 README가 기준입니다.
 
 **[→ 전체 저장소 보기](https://github.com/orgs/henryj-dev/repositories)**
+
+## 그 외 도구
+
+컨트롤 플레인까지는 필요 없는 작은 독립 도구들:
+
+| | |
+|---|---|
+| [**d1-jdbc**](https://github.com/henryj-dev/d1-jdbc) | Cloudflare D1용 JDBC 드라이버 — 의존성 0, REST API 또는 자체 배포 Worker 프록시 |
+| [**whois2rdap**](https://github.com/henryj-dev/whois2rdap) | WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환 |
+
+## 오픈소스 기여
+
+다른 프로젝트에 머지된 작업, fork 형태로 남겨둠:
+
+| | |
+|---|---|
+| [cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk) | miniflare: 원격 VPC Network 바인딩 로컬 개발 지원 ([#14712](https://github.com/cloudflare/workers-sdk/pull/14712), 머지됨) |
+| [soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor) | Kiro provider, 크레딧 기반 사용량 추적, Grok 4.6 가격 등 — [fork](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor) |
+| [AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector) | 기본 IPv4 주소 프리픽스 수정 — [fork](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector) |
+| [dbmail/dbmail](https://github.com/dbmail/dbmail) | RPM spec 파일 업데이트 — [fork](https://github.com/henryj-dev/contribute_dbmail_dbmail) |
 
 ## 참여하기
 
