@@ -19,10 +19,10 @@
 
 <sub>
 <a href="#how-things-here-are-built">Philosophy</a> ·
+<a href="#about">About</a> ·
 <a href="#projects">Projects</a> ·
 <a href="#also-here">Also here</a> ·
 <a href="#upstream-contributions">Contributions</a> ·
-<a href="#elsewhere">Elsewhere</a> ·
 <a href="#getting-involved">Get involved</a>
 </sub>
 
@@ -41,6 +41,29 @@
 > Whatever the subject, they take the same shape — you declare the state you want,
 > the tool shows you what will change, and it applies that change in a way you can
 > back out of.
+
+## About
+
+<table>
+<tr>
+<td width="88" align="center"><img src="https://avatars.githubusercontent.com/u/9063075?v=4" width="72" height="72" alt="mack-erel"></td>
+<td>
+
+**Henry Jang (장효찬)** · [@mack-erel](https://github.com/mack-erel)
+
+Backend / infrastructure engineer. This org is where the tools above land once
+they're finished enough for a README, a license, and a build badge — smaller
+scripts and day-to-day experiments stay on the personal account until one of
+them earns a spot here.
+
+[![Email](https://img.shields.io/badge/email-jang%40hyochan.site-24292f?style=flat-square&logo=gmail&logoColor=white)](mailto:jang@hyochan.site)
+[![Blog](https://img.shields.io/badge/blog-hyochan.site-8250df?style=flat-square&logo=rss&logoColor=white)](https://hyochan.site)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-yrneh--jang-0a66c2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yrneh-jang/)
+[![GitHub](https://img.shields.io/badge/personal-@mack--erel-0969da?style=flat-square&logo=github&logoColor=white)](https://github.com/mack-erel?tab=repositories)
+
+</td>
+</tr>
+</table>
 
 ## How things here are built
 
@@ -206,30 +229,6 @@ Work in other people's projects, kept here as forks — merged unless noted othe
 - [#348](https://github.com/dbmail/dbmail/pull/348): Update RPM spec files for dbmail, libsieve, and libzdb
 
 </td></tr>
-</table>
-
-<div align="center">
-<sub>· · ·</sub>
-</div>
-
-## Elsewhere
-
-<table>
-<tr>
-<td width="72" align="center"><img src="https://avatars.githubusercontent.com/u/9063075?v=4" width="56" height="56" alt="mack-erel"></td>
-<td>
-
-**[@mack-erel](https://github.com/mack-erel)** — personal account
-
-This org is the curated shelf: things that reached a README, a license, and a
-build badge. The workbench is the personal account — smaller scripts, one-off
-experiments, and half-finished ideas that haven't earned a place here yet. When
-one of them does, it moves.
-
-[![Follow](https://img.shields.io/github/followers/mack-erel?style=flat-square&logo=github&label=follow&color=24292f)](https://github.com/mack-erel?tab=repositories)
-
-</td>
-</tr>
 </table>
 
 <div align="center">
