@@ -119,7 +119,7 @@ nginx를 위한 컨트롤 플레인 — HTTP, TCP, UDP 리버스 프록시와 �
 
 </td><td>
 
-Cloudflare Workers 위에서 동작하는 오픈소스 아이덴티티 프로바이더 — OIDC, SAML 2.0, WebAuthn/Passkey, TOTP, LDAP
+오픈소스 아이덴티티 프로바이더 — 하나의 SvelteKit 앱으로 Cloudflare Workers와 Node에 모두 배포 가능; OIDC, SAML 2.0, WebAuthn/Passkey, TOTP, LDAP
 
 </td></tr>
 <tr><td>
