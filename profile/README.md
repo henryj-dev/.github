@@ -162,7 +162,8 @@ Merged work in other people's projects, kept here as forks:
 <tr><th width="230">Repository</th><th>Merged pull requests</th></tr>
 <tr><td>
 
-**[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**
+**[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**  
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/mack-erel/workers-sdk)
 
 </td><td>
 
