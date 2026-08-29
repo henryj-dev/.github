@@ -15,6 +15,17 @@
 <img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-8250df?style=flat-square">
 <a href="#getting-involved"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-2da44e?style=flat-square"></a>
 
+<br>
+
+<sub>
+<a href="#how-things-here-are-built">Philosophy</a> ·
+<a href="#projects">Projects</a> ·
+<a href="#also-here">Also here</a> ·
+<a href="#upstream-contributions">Contributions</a> ·
+<a href="#elsewhere">Elsewhere</a> ·
+<a href="#getting-involved">Get involved</a>
+</sub>
+
 <br><br>
 
 <b>English</b> · <a href="https://github.com/henryj-dev/.github/blob/main/profile/README.ko.md">한국어</a>
@@ -23,13 +34,13 @@
 
 ---
 
-Most of what we work on starts the same way: something important is configured by
-hand, on a box, and the only record of why it looks like that is the person who
-did it. These projects turn that into something you can read, review, and undo.
-
-Whatever the subject, they take the same shape — you declare the state you want,
-the tool shows you what will change, and it applies that change in a way you can
-back out of.
+> Most of what we work on starts the same way: something important is configured by
+> hand, on a box, and the only record of why it looks like that is the person who
+> did it. These projects turn that into something you can read, review, and undo.
+>
+> Whatever the subject, they take the same shape — you declare the state you want,
+> the tool shows you what will change, and it applies that change in a way you can
+> back out of.
 
 ## How things here are built
 
@@ -160,6 +171,34 @@ Merged work in other people's projects, kept here as forks:
 | [soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor) | [![merged](https://img.shields.io/badge/6_PRs-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor) Kiro provider, credit-based usage tracking, Grok 4.6 pricing, and more |
 | [AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector) Default IPv4 address prefix fix |
 | [dbmail/dbmail](https://github.com/dbmail/dbmail) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_dbmail_dbmail) RPM spec file updates |
+
+<div align="center">
+<sub>· · ·</sub>
+</div>
+
+## Elsewhere
+
+<table>
+<tr>
+<td width="72" align="center"><img src="https://avatars.githubusercontent.com/u/9063075?v=4" width="56" height="56" alt="mack-erel"></td>
+<td>
+
+**[@mack-erel](https://github.com/mack-erel)** — personal account
+
+This org is the curated shelf: things that reached a README, a license, and a
+build badge. The workbench is the personal account — smaller scripts, one-off
+experiments, and half-finished ideas that haven't earned a place here yet. When
+one of them does, it moves.
+
+[![Follow](https://img.shields.io/github/followers/mack-erel?style=flat-square&logo=github&label=follow&color=24292f)](https://github.com/mack-erel?tab=repositories)
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+<sub>· · ·</sub>
+</div>
 
 ## Getting involved
 
