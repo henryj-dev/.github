@@ -44,7 +44,7 @@
 
 ## How things here are built
 
-| | |
+| Principle | What it means |
 |---|---|
 | **Desired state, not commands** | You declare what should be true. Reconciliation is the tool's job, and it only ever touches what it manages. |
 | **Plan before apply** | Every change is previewable. You see the impact before anything moves. |
@@ -165,12 +165,56 @@ Converts WHOIS responses into RFC 9083 RDAP-shaped JSON
 
 Merged work in other people's projects, kept here as forks:
 
-| | |
-|---|---|
-| [cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/cloudflare/workers-sdk/pull/14712) miniflare: local dev support for remote VPC Network bindings |
-| [soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor) | [![merged](https://img.shields.io/badge/6_PRs-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor) Kiro provider, credit-based usage tracking, Grok 4.6 pricing, and more |
-| [AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector) Default IPv4 address prefix fix |
-| [dbmail/dbmail](https://github.com/dbmail/dbmail) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_dbmail_dbmail) RPM spec file updates |
+<table>
+<tr><th width="230">Repository</th><th>Merged pull requests</th></tr>
+<tr><td>
+
+**[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**
+
+</td><td>
+
+- [#14712](https://github.com/cloudflare/workers-sdk/pull/14712): miniflare — support `connect()` on remote VPC Network bindings in local dev
+
+</td></tr>
+<tr><td>
+
+**[soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor)**
+
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor)
+
+</td><td>
+
+- [#189](https://github.com/soulduse/ai-token-monitor/pull/189): Grok 4.6 pricing, SuperGrok credits, Linux/Windows support
+- [#181](https://github.com/soulduse/ai-token-monitor/pull/181): Price and aggregate gateway-rewritten model IDs correctly
+- [#180](https://github.com/soulduse/ai-token-monitor/pull/180): Add Kiro provider with credit-based usage tracking
+- [#179](https://github.com/soulduse/ai-token-monitor/pull/179): Call the Kiro API directly instead of shelling out to kiro-cli
+- [#154](https://github.com/soulduse/ai-token-monitor/pull/154): Tolerate null `resets_at` in OAuth usage response
+- [#143](https://github.com/soulduse/ai-token-monitor/pull/143): Add Kiro CLI as an API-key-based translation provider
+
+</td></tr>
+<tr><td>
+
+**[AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector)**
+
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector)
+
+</td><td>
+
+- [#10](https://github.com/AnimMouse/wgcf-connector/pull/10): Default IPv4 address prefix `/12` → `/32` (rely on `AllowedIPs` for routing)
+
+</td></tr>
+<tr><td>
+
+**[dbmail/dbmail](https://github.com/dbmail/dbmail)**
+
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_dbmail_dbmail)
+
+</td><td>
+
+- [#348](https://github.com/dbmail/dbmail/pull/348): Update RPM spec files for dbmail, libsieve, and libzdb
+
+</td></tr>
+</table>
 
 <div align="center">
 <sub>· · ·</sub>
