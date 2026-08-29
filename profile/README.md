@@ -124,7 +124,7 @@ A host firewall you can't lock yourself out of — declarative nftables with aut
 
 </td><td>
 
-An open-source identity provider on Cloudflare Workers — OIDC, SAML 2.0, WebAuthn/Passkey, TOTP, LDAP
+An open-source identity provider — one SvelteKit app, deployable to Cloudflare Workers or Node; OIDC, SAML 2.0, WebAuthn/Passkey, TOTP, LDAP
 
 </td></tr>
 <tr><td>
