@@ -151,10 +151,10 @@ WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환
 
 ## 오픈소스 기여
 
-다른 프로젝트에 머지된 작업, fork 형태로 남겨둠:
+다른 프로젝트에 남긴 작업, fork 형태로 남겨둠 (별도 표시 없으면 머지됨):
 
 <table>
-<tr><th width="230">저장소</th><th>머지된 PR</th></tr>
+<tr><th width="230">저장소</th><th>PR</th></tr>
 <tr><td>
 
 **[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**  
@@ -163,6 +163,7 @@ WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환
 </td><td>
 
 - [#14712](https://github.com/cloudflare/workers-sdk/pull/14712): miniflare — 원격 VPC Network 바인딩에서 로컬 개발 시 `connect()` 지원
+- [#14900](https://github.com/cloudflare/workers-sdk/pull/14900): miniflare — 원격 Hyperdrive 바인딩 로컬 개발 지원 *(진행 중)*
 
 </td></tr>
 <tr><td>
