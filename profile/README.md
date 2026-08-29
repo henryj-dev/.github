@@ -13,6 +13,7 @@
 <a href="https://github.com/orgs/henryj-dev/repositories"><img alt="Repositories" src="https://img.shields.io/badge/repositories-browse-0969da?style=flat-square&logo=github&logoColor=white"></a>
 <a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white"></a>
 <img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-8250df?style=flat-square">
+<a href="#getting-involved"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-2da44e?style=flat-square"></a>
 
 <br><br>
 
@@ -43,13 +44,73 @@ back out of.
 
 ## Projects
 
-| | |
-|---|---|
-| [**parallax**](https://github.com/henryj-dev/parallax) | Split-horizon DNS control plane — one desired state for internal DNS and Cloudflare |
-| [**barycenter**](https://github.com/henryj-dev/barycenter) | A control plane for nginx — HTTP, TCP, and UDP reverse proxying and load balancing |
-| [**heliopause**](https://github.com/henryj-dev/heliopause) | A host firewall you can't lock yourself out of — declarative nftables with auto-rollback |
-| [**lodestar**](https://github.com/henryj-dev/lodestar) | An open-source identity provider on Cloudflare Workers — OIDC, SAML 2.0, WebAuthn/Passkey, TOTP, LDAP |
-| [**ionosphere**](https://github.com/henryj-dev/ionosphere) | A mail server built from scratch — SMTP, IMAP, POP3, JMAP, ManageSieve, LMTP, zero runtime dependencies |
+<table>
+<tr><td width="290">
+
+**[parallax](https://github.com/henryj-dev/parallax)**
+
+[![build](https://github.com/henryj-dev/parallax/actions/workflows/check.yml/badge.svg)](https://github.com/henryj-dev/parallax/actions/workflows/check.yml)
+![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/parallax?style=flat-square&color=0969da&label=)
+![Apache-2.0](https://img.shields.io/github/license/henryj-dev/parallax?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+Split-horizon DNS control plane — one desired state for internal DNS and Cloudflare
+
+</td></tr>
+<tr><td>
+
+**[barycenter](https://github.com/henryj-dev/barycenter)**
+
+[![build](https://github.com/henryj-dev/barycenter/actions/workflows/verify.yml/badge.svg)](https://github.com/henryj-dev/barycenter/actions/workflows/verify.yml)
+![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/barycenter?style=flat-square&color=0969da&label=)
+![Apache-2.0](https://img.shields.io/github/license/henryj-dev/barycenter?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+A control plane for nginx — HTTP, TCP, and UDP reverse proxying and load balancing
+
+</td></tr>
+<tr><td>
+
+**[heliopause](https://github.com/henryj-dev/heliopause)**
+
+[![build](https://github.com/henryj-dev/heliopause/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/heliopause/actions/workflows/ci.yml)
+![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/heliopause?style=flat-square&color=0969da&label=)
+![Apache-2.0](https://img.shields.io/github/license/henryj-dev/heliopause?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+A host firewall you can't lock yourself out of — declarative nftables with auto-rollback
+
+</td></tr>
+<tr><td>
+
+**[lodestar](https://github.com/henryj-dev/lodestar)**
+
+[![build](https://github.com/henryj-dev/lodestar/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/lodestar/actions/workflows/ci.yml)
+![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/lodestar?style=flat-square&color=0969da&label=)
+![MIT](https://img.shields.io/github/license/henryj-dev/lodestar?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+An open-source identity provider on Cloudflare Workers — OIDC, SAML 2.0, WebAuthn/Passkey, TOTP, LDAP
+
+</td></tr>
+<tr><td>
+
+**[ionosphere](https://github.com/henryj-dev/ionosphere)**
+
+[![build](https://github.com/henryj-dev/ionosphere/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/ionosphere/actions/workflows/ci.yml)
+![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/ionosphere?style=flat-square&color=0969da&label=)
+![MIT](https://img.shields.io/github/license/henryj-dev/ionosphere?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+A mail server built from scratch — SMTP, IMAP, POP3, JMAP, ManageSieve, LMTP, zero runtime dependencies
+
+</td></tr>
+</table>
 
 More are on their way here. Each repository's own README is the source of truth
 for what it does and how finished it is.
@@ -60,10 +121,34 @@ for what it does and how finished it is.
 
 Smaller, standalone tools that don't need a control plane of their own:
 
-| | |
-|---|---|
-| [**d1-jdbc**](https://github.com/henryj-dev/d1-jdbc) | A JDBC driver for Cloudflare D1 — zero-dependency, REST API or self-deployed Worker proxy |
-| [**whois2rdap**](https://github.com/henryj-dev/whois2rdap) | Converts WHOIS responses into RFC 9083 RDAP-shaped JSON |
+<table>
+<tr><td width="290">
+
+**[d1-jdbc](https://github.com/henryj-dev/d1-jdbc)**
+
+[![build](https://github.com/henryj-dev/d1-jdbc/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/d1-jdbc/actions/workflows/ci.yml)
+![Java](https://img.shields.io/github/languages/top/henryj-dev/d1-jdbc?style=flat-square&color=0969da&label=)
+![MIT](https://img.shields.io/github/license/henryj-dev/d1-jdbc?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+A JDBC driver for Cloudflare D1 — zero-dependency, REST API or self-deployed Worker proxy
+
+</td></tr>
+<tr><td>
+
+**[whois2rdap](https://github.com/henryj-dev/whois2rdap)**
+
+[![build](https://github.com/henryj-dev/whois2rdap/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/whois2rdap/actions/workflows/ci.yml)
+![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/whois2rdap?style=flat-square&color=0969da&label=)
+![MIT](https://img.shields.io/github/license/henryj-dev/whois2rdap?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+Converts WHOIS responses into RFC 9083 RDAP-shaped JSON
+
+</td></tr>
+</table>
 
 ## Upstream contributions
 
@@ -71,10 +156,10 @@ Merged work in other people's projects, kept here as forks:
 
 | | |
 |---|---|
-| [cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk) | miniflare: local dev support for remote VPC Network bindings ([#14712](https://github.com/cloudflare/workers-sdk/pull/14712), merged) |
-| [soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor) | Kiro provider, credit-based usage tracking, Grok 4.6 pricing, and more — [fork](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor) |
-| [AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector) | Default IPv4 address prefix fix — [fork](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector) |
-| [dbmail/dbmail](https://github.com/dbmail/dbmail) | RPM spec file updates — [fork](https://github.com/henryj-dev/contribute_dbmail_dbmail) |
+| [cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/cloudflare/workers-sdk/pull/14712) miniflare: local dev support for remote VPC Network bindings |
+| [soulduse/ai-token-monitor](https://github.com/soulduse/ai-token-monitor) | [![merged](https://img.shields.io/badge/6_PRs-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_soulduse_ai-token-monitor) Kiro provider, credit-based usage tracking, Grok 4.6 pricing, and more |
+| [AnimMouse/wgcf-connector](https://github.com/AnimMouse/wgcf-connector) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_AnimMouse_wgcf-connector) Default IPv4 address prefix fix |
+| [dbmail/dbmail](https://github.com/dbmail/dbmail) | [![merged](https://img.shields.io/badge/PR-merged-2da44e?style=flat-square)](https://github.com/henryj-dev/contribute_dbmail_dbmail) RPM spec file updates |
 
 ## Getting involved
 
