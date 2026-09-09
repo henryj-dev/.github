@@ -111,6 +111,26 @@ jobs:
             [ "$merges" = "squash" ] || note "$repo · 허용 머지=[$merges] (기준 [squash])"
           done
 
+          # 라이선스 — **룰셋 층보다 넓게 본다.** 룰셋을 두지 않은 작은 도구도 같은
+          # 라이선스를 써야 하므로 대상 목록이 위 루프와 다르다.
+          #
+          # 이 축은 원래 없었다. 그래서 lodestar·ionosphere·d1-jdbc·whois2rdap 가 MIT 인 채로
+          # 한 달 넘게 아무 검사에도 안 걸렸다 — 룰셋·머지설정·보안기능을 매주 대조하면서
+          # 정작 저장소가 무엇으로 배포되는지는 아무도 안 물었다.
+          #
+          # `.license.spdx_id` 는 일반 읽기 권한으로 나온다. 위쪽 설정·보안 필드와 달리
+          # Administration read 가 없어도 이 검사는 실제로 답을 낸다.
+          echo "── 라이선스"
+          want_lic="$(jq -r '.license.spdx' "$base")"
+          for repo in $(jq -r '.license.repos[]' "$base"); do
+            got_lic="$(gh api "repos/$OWNER/$repo" --jq '.license.spdx_id // "없음"')"
+            if [ "$got_lic" = "$want_lic" ]; then
+              printf '  %-14s %s\n' "$repo" "$got_lic"
+            else
+              note "$repo · 라이선스 \`$got_lic\` (기준 $want_lic)"
+            fi
+          done
+
           {
             echo "drift<<EOF"
             printf '%s' "$drift"

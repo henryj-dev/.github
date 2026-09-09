@@ -204,6 +204,7 @@ Work in other people's projects, kept here as forks — merged unless noted othe
 
 - [#14712](https://github.com/cloudflare/workers-sdk/pull/14712): miniflare — support `connect()` on remote VPC Network bindings in local dev
 - [#14900](https://github.com/cloudflare/workers-sdk/pull/14900): miniflare — support remote Hyperdrive bindings in local dev *(open)*
+- [#15541](https://github.com/cloudflare/workers-sdk/pull/15541): remote bindings — retry the proactive preview token refresh after a transient failure *(open)*
 
 </td></tr>
 <tr><td>

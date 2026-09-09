@@ -8,6 +8,10 @@ Organization-level defaults for [**henryj-dev**](https://github.com/henryj-dev).
 | [`profile/README.ko.md`](profile/README.ko.md) | Korean translation of the profile page |
 | `profile/assets/` | Generated banner artwork — do not hand-edit |
 | [`scripts/build-banners.py`](scripts/build-banners.py) | Renders every banner from one template |
+| [`.github/workflows/policy-checks.yml`](.github/workflows/policy-checks.yml) | Reusable gate the code repositories call — secret scan, workflow audit, dependency review |
+| [`.github/workflows/ruleset-drift.yml`](.github/workflows/ruleset-drift.yml) | Weekly: compares each repository's rulesets and settings against the baseline |
+| [`.github/workflows/tool-freshness.yml`](.github/workflows/tool-freshness.yml) | Weekly: reports when a pinned scanner has fallen behind its upstream release |
+| [`policy/baseline.json`](policy/baseline.json) | The ruleset, merge settings, and security features every code repository must match |
 
 ## The profile page is deliberately generic
 
@@ -70,6 +74,32 @@ each, and readers switch by hand. English is what visitors land on; Korean is
 reached at its file URL.
 
 Keep them in sync. A change to one is only half done until the other matches.
+
+## The policy layer
+
+What each code repository builds differs. Whether a credential landed in its
+history, whether its workflows are safe to run, and what a pull request drags in
+do not — so that layer lives here once, in
+[`.github/workflows/policy-checks.yml`](.github/workflows/policy-checks.yml), and
+each repository calls it instead of keeping its own copy.
+
+**Callers must pin it by commit SHA.** `@main` is a moving reference, and with it a
+single edit to that file silently changes the gate on every repository at once.
+Dependabot bumps the SHA, so pinning does not mean going stale.
+
+Two scheduled workflows watch what that gate cannot see:
+
+- `ruleset-drift.yml` compares each repository's ruleset, merge settings, and
+  security features against `policy/baseline.json` every Monday. It does not block —
+  it makes divergence visible, in one issue it keeps updated and closes when the
+  drift is gone. An intentional change belongs in the baseline file, not in a
+  dismissal, or the same line reappears next week.
+- `tool-freshness.yml` reports when gitleaks, actionlint, or zizmor fall behind
+  upstream. They are pinned by version *and* checksum, which Dependabot cannot bump,
+  and a scanner that quietly stops catching new things never turns the build red.
+
+Raising a pinned version means editing the version **and** the SHA256 together —
+change one and the download check fails on the spot, which is the point.
 
 ## Other things this repository can hold
 
