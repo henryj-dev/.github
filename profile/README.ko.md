@@ -198,6 +198,7 @@ WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환
 
 - [#14712](https://github.com/cloudflare/workers-sdk/pull/14712): miniflare — 원격 VPC Network 바인딩에서 로컬 개발 시 `connect()` 지원
 - [#14900](https://github.com/cloudflare/workers-sdk/pull/14900): miniflare — 원격 Hyperdrive 바인딩 로컬 개발 지원 *(진행 중)*
+- [#15541](https://github.com/cloudflare/workers-sdk/pull/15541): 원격 바인딩 — 일시적 실패 뒤 사전 프리뷰 토큰 갱신을 재시도 *(진행 중)*
 
 </td></tr>
 <tr><td>

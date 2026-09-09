@@ -1,6 +1,11 @@
 {
-  "//": "다섯 저장소가 같아야 하는 것의 기준. ruleset-drift.yml 이 이 파일과 실물을 견준다.",
+  "//": "저장소들이 같아야 하는 것의 기준. ruleset-drift.yml 이 이 파일과 실물을 견준다.",
   "repos": ["barycenter", "heliopause", "ionosphere", "lodestar", "parallax"],
+  "license": {
+    "//": "라이선스는 룰셋 층보다 넓게 적용된다 — 룰셋을 두지 않은 작은 도구도 같은 라이선스를 쓴다. 그래서 대상 목록을 위의 repos 와 따로 갖는다.",
+    "spdx": "Apache-2.0",
+    "repos": ["barycenter", "d1-jdbc", "heliopause", "ionosphere", "lodestar", "parallax", "whois2rdap"]
+  },
   "ruleset": {
     "name": "main",
     "enforcement": "active",
