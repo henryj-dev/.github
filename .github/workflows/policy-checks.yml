@@ -21,13 +21,42 @@
 # `.gitleaks.toml` 도 그쪽 것을 읽는다 — 예외 목록은 각 저장소가 자기 근거와 함께 갖는다.
 #
 # ⚠️ 부르는 쪽은 **반드시 커밋 SHA 로** 박는다. `@main` 은 움직이는 참조이고, 그러면 이
-#    파일을 고치는 것만으로 다섯 저장소의 게이트가 동시에 바뀐다. dependabot 이 SHA 를
-#    갱신해 주므로 낡을 걱정은 없다.
+#    파일을 고치는 것만으로 다섯 저장소의 게이트가 동시에 바뀐다.
+#
+# 🔴 **"dependabot 이 SHA 를 갱신해 주므로 낡을 걱정은 없다" 고 적혀 있었고, 그건 사실이
+#    아니다.** dependabot 은 `uses:` 로 부르는 **액션**은 갱신하지만, **태그도 릴리스도
+#    없는 저장소의 재사용 워크플로 핀**은 갱신하지 못한다 — 이 저장소가 바로 그렇다.
+#    tiny-universe/heliopause 에서 실측(2026-09-04): 핀은 사람이 박은 2026-08-26 이후
+#    한 번도 움직이지 않았고, 08-29 의 상류 커밋이 그대로 남아 있었으며, dependabot 은
+#    제안한 적이 없었다. 그래서 그 핀은 **사고로 영구해진 핀**이었다 — 리뷰된 것처럼
+#    보이면서 그냥 멈춰 있는, 핀의 가장 나쁜 모양이다.
+#
+#    **태그를 끊기 전까지 그 줄은 손으로 움직인다.** 이 파일을 고쳤으면 부르는 다섯 곳에
+#    알려야 한다: `gh api repos/henryj-dev/.github/commits/main --jq .sha`
 
 name: policy checks
 
 on:
   workflow_call:
+    inputs:
+      # 어느 러너에서 돌 것인가. 기본값은 GitHub 호스티드다 — 이 층은 저장소의 코드를
+      # 빌드하지 않고 받아 온 바이너리로 읽기만 하므로, 일회용 VM 이 맞는 자리다.
+      #
+      # 입력인 이유: `runs-on` 은 **잡의 환경이 생기기 전에** 평가된다. 그래서 거기 쓴
+      # `vars.*` 나 `env` 는 빈 문자열이 되고, 잡은 조용히 기본 러너로 간다 — 틀린 채로
+      # 맞아 보인다(tiny-universe/heliopause 의 ci.yml 이 그 사고를 기록하고 있다).
+      # 재사용 워크플로의 `inputs` 는 그 시점에 이미 있으므로 여기서만 성립한다.
+      #
+      # 문자열로 받아 `fromJSON` 으로 푸는 것은 YAML 에 배열 타입 입력이 없어서다.
+      # 넘기는 쪽 예: `runner-labels: '["self-hosted","runner-01-ext-icn-vtr"]'`
+      #
+      # ⚠️ 자체 러너를 넘기는 것은 **공개 저장소에서는 하지 말 것.** 포크의
+      #    `pull_request` 는 후보의 코드를 우리 기계에서 돌린다.
+      runner-labels:
+        description: '잡을 배정할 러너 라벨. JSON 배열 문자열. 예: ''["self-hosted","runner-01-ext-icn-vtr"]'''
+        type: string
+        required: false
+        default: '["ubuntu-latest"]'
     secrets:
       GITLEAKS_LICENSE:
         description: "조직 소유 저장소에 필요한 gitleaks-action 라이선스"
@@ -41,7 +70,7 @@ jobs:
   # 공개 저장소에서 한 번 밀린 값은 밀린 순간 이미 밖에 있다.
   secret-scan:
     name: secret scan
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(inputs.runner-labels) }}
     timeout-minutes: 15
     # **버전은 잡 전체에 한 벌.** 아래 두 스텝이 같은 gitleaks 를 써야 하고, 그 이유는
     # 액션 스텝 주석에 적었다. 갈라 두면 두 눈이 서로 다른 규칙·다른 설정 파서로 보게 된다.
@@ -96,7 +125,7 @@ jobs:
   # `run:` 본문에 박히면 그게 곧 셸 코드가 된다. 사람은 리뷰에서 반드시 놓친다.
   workflow-audit:
     name: workflow audit
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(inputs.runner-labels) }}
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -131,7 +160,7 @@ jobs:
     name: dependency review
     # PR 에서만 뜻이 있다. 기준점이 있어야 "무엇이 새로 들어왔는가" 를 물을 수 있다.
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(inputs.runner-labels) }}
     timeout-minutes: 10
     permissions:
       contents: read
