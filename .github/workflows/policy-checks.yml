@@ -12,8 +12,6 @@
 #         permissions:
 #           contents: read
 #           pull-requests: write     # dependency-review 가 PR 에 이유를 적는다
-#         secrets:
-#           GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
 #       gate:
 #         needs: [..., policy]
 #
@@ -58,9 +56,13 @@ on:
         required: false
         default: '["ubuntu-latest"]'
     secrets:
+      # **이제 쓰지 않는다.** gitleaks-action 을 걷어 냈으므로 라이선스가 필요 없다.
+      # 선언만 남기는 것은, 선언되지 않은 시크릿을 넘기면 재사용 워크플로 호출이
+      # 시작부터 실패하기 때문이다 — 지금 부르는 여섯 곳이 모두 이 값을 넘긴다. 부르는 쪽이
+      # 전부 `secrets:` 줄을 지운 뒤에 이 블록도 지운다.
       GITLEAKS_LICENSE:
-        description: "조직 소유 저장소에 필요한 gitleaks-action 라이선스"
-        required: true
+        description: "쓰지 않는다. 기존 호출이 깨지지 않게 선언만 남겨 둔다"
+        required: false
 
 permissions:
   contents: read
@@ -72,9 +74,6 @@ jobs:
     name: secret scan
     runs-on: ${{ fromJSON(inputs.runner-labels) }}
     timeout-minutes: 15
-    # **버전은 잡 전체에 한 벌.** 아래 두 스텝이 같은 gitleaks 를 써야 하고, 그 이유는
-    # 액션 스텝 주석에 적었다. 갈라 두면 두 눈이 서로 다른 규칙·다른 설정 파서로 보게 된다.
-    #
     # `tool-freshness.yml` 이 이 줄을 grep 해 최신 릴리스와 견준다. 올릴 때는
     # **버전과 SHA256 을 함께** 바꾼다 — 체크섬을 두면 받은 것이 무엇인지 우리가 정한다.
     env:
@@ -86,40 +85,32 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
-          # **설정을 못 박는다.** 자동 탐지에 맡기면 `.gitleaks.toml` 이 안 읽혀도 조용히
-          # 통과하고, 그러면 예외가 아니라 검사가 사라진 것을 통과로 읽는다.
-          GITLEAKS_CONFIG: .gitleaks.toml
-          # **버전도 못 박는다 — 설정을 읽는 것과 이해하는 것은 다른 문제다.**
-          # 이 액션의 기본값은 gitleaks 8.24.3 이다. 그 버전은 설정 파일을 읽기는 읽고
-          # 로그에 읽었다고까지 적지만, **최상위 `[[allowlists]]`(복수)를 파싱하지 않는다** —
-          # 그 버전의 최상위에는 단수 `Allowlist` 필드밖에 없고, 모르는 키는 에러도 경고도
-          # 없이 버려진다. 예외 목록이 통째로 사라진 채 초록/빨강이 정해진다.
-          #
-          # parallax 에서 그대로 났다. PR·push 런은 이벤트 범위만 보느라 옛 커밋을 안 봐서
-          # 계속 초록이었고, 주기 실행이 처음으로 이력 전체를 훑자 액션은 27건, 바로 아래
-          # 두 번째 눈은 0건을 냈다 — 같은 이력, 같은 설정, 다른 버전.
-          # 여기서는 빨개지는 쪽으로 틀렸지만, 반대 방향으로 틀리지 않는다는 보장은 없다.
-          GITLEAKS_VERSION: ${{ env.GITLEAKS_VERSION }}
-
-      # **두 번째 눈 — 이력 전체.** 위의 액션은 이벤트 범위만 본다(push 면 밀린 커밋,
-      # PR 이면 PR 커밋). 그것만으로는 이미 이력에 있는 것을 다시 훑지 않는다 — 새 규칙이
-      # 추가돼 어제까지 조용하던 옛 커밋이 오늘 걸리는 경우를 놓친다.
+      # **눈은 하나 — 이력 전체, 이벤트와 무관하게.** `git log --all` 범위라 push·PR·
+      # 주기 실행 모두 받아 온 모든 ref 를 훑는다(PR 의 merge 커밋도 HEAD 로 들어간다).
+      # 이벤트 범위만 보면 새 규칙이 붙어 어제까지 조용하던 옛 커밋이 오늘 걸리는 경우를
+      # 놓친다.
       #
-      # `!cancelled()` 로 걸어 위가 빨개져도 반드시 돈다. 한쪽 실패가 다른 쪽 신호를
-      # 가리면 무엇이 깨졌는지 한 번에 못 본다.
+      # **전에는 gitleaks/gitleaks-action 이 하나 더 있었고, 걷어 냈다.** 그 액션은
+      # 버전을 넘기지 않으면 gitleaks 8.24.3 을 받는데, 그 버전은 `.gitleaks.toml` 을
+      # 읽었다고 로그에 적으면서도 **최상위 `[[allowlists]]`(복수, 8.25.0 에서 생김)를
+      # 말없이 버린다.** 예외 목록이 통째로 사라진 채 초록/빨강이 정해졌다. parallax 의
+      # 주기 실행에서 액션은 27건, 이 스텝은 0건을 냈고, f8eab73 에 박힌 ionosphere 와
+      # lodestar 의 주기 실행은 9월 내내 같은 이유로 빨갰다 — 같은 이력, 같은 설정,
+      # 다른 버전. 버전을 맞춰 넘겨도 남는 것은 같은 바이너리를 두 번 돌리는 일과,
+      # 개인 계정이 아니면 요구하는 라이선스 시크릿뿐이었다.
+      #
+      # `--config` 를 못 박는 것은 자동 탐지에 맡기면 `.gitleaks.toml` 이 안 읽혀도 조용히
+      # 통과하기 때문이다 — 그러면 예외가 아니라 검사가 사라진 것을 통과로 읽는다.
+      # `.gitleaksignore` 는 작업 트리 루트에서 자동으로 읽는다. `--verbose` 는 걸린 것의
+      # 규칙·파일·커밋을 로그에 남긴다(값은 `--redact` 가 가린다). 없으면 개수만 남는다.
       - name: gitleaks (이력 전체)
-        if: ${{ !cancelled() }}
         run: |
           set -euo pipefail
           url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
           curl -fsSL --retry 3 -o /tmp/gitleaks.tgz "$url"
           echo "${GITLEAKS_SHA256}  /tmp/gitleaks.tgz" | sha256sum -c -
           tar xzf /tmp/gitleaks.tgz -C /tmp gitleaks
-          /tmp/gitleaks git --no-banner --redact --exit-code 1 --config .gitleaks.toml .
+          /tmp/gitleaks git --no-banner --redact --verbose --exit-code 1 --config .gitleaks.toml .
 
   # **워크플로 자체가 공격면이다.** 러너는 밖에서 온 코드를 실행하고, `${{ }}` 가
   # `run:` 본문에 박히면 그게 곧 셸 코드가 된다. 사람은 리뷰에서 반드시 놓친다.
