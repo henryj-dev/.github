@@ -55,14 +55,9 @@ on:
         type: string
         required: false
         default: '["ubuntu-latest"]'
-    secrets:
-      # **이제 쓰지 않는다.** gitleaks-action 을 걷어 냈으므로 라이선스가 필요 없다.
-      # 선언만 남기는 것은, 선언되지 않은 시크릿을 넘기면 재사용 워크플로 호출이
-      # 시작부터 실패하기 때문이다 — 지금 부르는 여섯 곳이 모두 이 값을 넘긴다. 부르는 쪽이
-      # 전부 `secrets:` 줄을 지운 뒤에 이 블록도 지운다.
-      GITLEAKS_LICENSE:
-        description: "쓰지 않는다. 기존 호출이 깨지지 않게 선언만 남겨 둔다"
-        required: false
+    # 시크릿은 받지 않는다. 이 층은 받아 온 바이너리로 읽기만 하므로 필요한 시크릿이 없다.
+    # ⚠️ 부르는 쪽이 `secrets:` 를 넘기면, 선언되지 않은 시크릿이라 호출이 시작부터 실패한다.
+    #    예전 핀(982f0bc 이전)에서 올리는 저장소는 `secrets: GITLEAKS_LICENSE` 를 함께 지운다.
 
 permissions:
   contents: read
