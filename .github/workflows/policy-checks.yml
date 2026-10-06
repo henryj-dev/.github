@@ -56,8 +56,10 @@ on:
         required: false
         default: '["ubuntu-latest"]'
     # 시크릿은 받지 않는다. 이 층은 받아 온 바이너리로 읽기만 하므로 필요한 시크릿이 없다.
-    # ⚠️ 부르는 쪽이 `secrets:` 를 넘기면, 선언되지 않은 시크릿이라 호출이 시작부터 실패한다.
-    #    예전 핀(982f0bc 이전)에서 올리는 저장소는 `secrets: GITLEAKS_LICENSE` 를 함께 지운다.
+    # ⚠️ 부르는 쪽이 이름 있는 시크릿(`secrets: { NAME: … }`)을 넘기면, 선언되지 않은
+    #    시크릿이라 호출이 시작부터 실패한다. `secrets: inherit` 는 실패하지 않지만 이 층에는
+    #    필요 없다. 이 커밋 이전의 핀에서 `secrets:` 를 넘기던 저장소는, 핀을 올리는 커밋에서
+    #    그 블록을 함께 지운다.
 
 permissions:
   contents: read
