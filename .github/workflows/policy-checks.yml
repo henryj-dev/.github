@@ -110,11 +110,12 @@ jobs:
           # 스텝이 하나뿐이니 여기서 먼저 막는다.
           n=$(git rev-list --all --no-merges --count)
           test "$n" -gt 0 || { echo "::error::스캔할 커밋이 없다"; exit 1; }
+          tool_dir=$(mktemp -d "$RUNNER_TEMP/gitleaks.XXXXXX")
           url="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
-          curl -fsSL --retry 3 -o /tmp/gitleaks.tgz "$url"
-          echo "${GITLEAKS_SHA256}  /tmp/gitleaks.tgz" | sha256sum -c -
-          tar xzf /tmp/gitleaks.tgz -C /tmp gitleaks
-          /tmp/gitleaks git --no-banner --redact --verbose --exit-code 1 --config .gitleaks.toml .
+          curl -fsSL --retry 3 -o "$tool_dir/gitleaks.tgz" "$url"
+          echo "${GITLEAKS_SHA256}  $tool_dir/gitleaks.tgz" | sha256sum -c -
+          tar xzf "$tool_dir/gitleaks.tgz" -C "$tool_dir" gitleaks
+          "$tool_dir/gitleaks" git --no-banner --redact --verbose --exit-code 1 --config .gitleaks.toml .
 
   # **워크플로 자체가 공격면이다.** 러너는 밖에서 온 코드를 실행하고, `${{ }}` 가
   # `run:` 본문에 박히면 그게 곧 셸 코드가 된다. 사람은 리뷰에서 반드시 놓친다.
@@ -132,11 +133,12 @@ jobs:
           ACTIONLINT_SHA256: "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
         run: |
           set -euo pipefail
+          tool_dir=$(mktemp -d "$RUNNER_TEMP/actionlint.XXXXXX")
           url="https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
-          curl -fsSL --retry 3 -o /tmp/actionlint.tgz "$url"
-          echo "${ACTIONLINT_SHA256}  /tmp/actionlint.tgz" | sha256sum -c -
-          tar xzf /tmp/actionlint.tgz -C /tmp actionlint
-          /tmp/actionlint -color .github/workflows/*.yml
+          curl -fsSL --retry 3 -o "$tool_dir/actionlint.tgz" "$url"
+          echo "${ACTIONLINT_SHA256}  $tool_dir/actionlint.tgz" | sha256sum -c -
+          tar xzf "$tool_dir/actionlint.tgz" -C "$tool_dir" actionlint
+          "$tool_dir/actionlint" -color .github/workflows/*.yml
       - name: zizmor
         env:
           ZIZMOR_VERSION: "1.29.0"
