@@ -11,8 +11,8 @@
 **Tools for running systems, built so the risky change is the hard one to make by accident.**
 
 <a href="https://github.com/orgs/henryj-dev/repositories"><img alt="Repositories" src="https://img.shields.io/badge/repositories-browse-0969da?style=flat-square&logo=github&logoColor=white"></a>
-<a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white"></a>
-<img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-8250df?style=flat-square">
+<a href="https://www.typescriptlang.org/"><img alt="TypeScript in selected projects" src="https://img.shields.io/badge/TypeScript-selected%20projects-3178c6?style=flat-square&logo=typescript&logoColor=white"></a>
+<a href="https://github.com/orgs/henryj-dev/repositories"><img alt="Licenses vary by repository" src="https://img.shields.io/badge/license-per%20repository-8250df?style=flat-square"></a>
 <a href="#getting-involved"><img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-2da44e?style=flat-square"></a>
 
 <br>
@@ -38,9 +38,9 @@
 > hand, on a box, and the only record of why it looks like that is the person who
 > did it. These projects turn that into something you can read, review, and undo.
 >
-> Whatever the subject, they take the same shape — you declare the state you want,
-> the tool shows you what will change, and it applies that change in a way you can
-> back out of.
+> For infrastructure control planes, the design goal is to declare the desired state,
+> preview changes, and apply them in a way you can back out of. Actual support varies
+> by project; each repository's README describes its scope and current stage.
 
 ## About
 
@@ -51,10 +51,9 @@
 
 **Henry Jang (장효찬)** · [@mack-erel](https://github.com/mack-erel)
 
-Backend / infrastructure engineer. This org is where the tools above land once
-they're finished enough for a README, a license, and a build badge — smaller
-scripts and day-to-day experiments stay on the personal account until one of
-them earns a spot here.
+Backend / infrastructure engineer. This org publishes infrastructure tools and
+independent projects. Each repository's README describes its scope and development
+stage.
 
 [![Email](https://img.shields.io/badge/email-jang%40hyochan.site-24292f?style=flat-square&logo=gmail&logoColor=white)](mailto:jang@hyochan.site)
 [![Blog](https://img.shields.io/badge/blog-hyochan.site-8250df?style=flat-square&logo=rss&logoColor=white)](https://hyochan.site)
@@ -79,14 +78,16 @@ them earns a spot here.
 
 ## How things here are built
 
+These principles guide the infrastructure control planes; implementation varies by project.
+
 | Principle | What it means |
 |---|---|
-| **Desired state, not commands** | You declare what should be true. Reconciliation is the tool's job, and it only ever touches what it manages. |
-| **Plan before apply** | Every change is previewable. You see the impact before anything moves. |
-| **Safe by construction** | Rollback timers, commit/confirm, verification after the change lands. The move that breaks things is hard to make by accident. |
-| **Equal-power surfaces** | GUI, API, and CLI are the same product. Nothing is only clickable, nothing is only scriptable. |
-| **Light on dependencies** | Few moving parts, boring stacks, and no runtime you have to adopt to get value. |
-| **Open by default** | Apache-2.0, public issue trackers, and READMEs that admit what is not finished yet. |
+| **Desired state, not commands** | Declare what should be true; tools reconcile only what they manage. |
+| **Plan before apply** | Preview changes before applying them. |
+| **Safe by construction** | Design for rollback, commit/confirm, and post-change verification. |
+| **Equal-power surfaces** | Keep GUI, API, and CLI as equivalent interfaces where offered. |
+| **Light on dependencies** | Prefer small dependency sets and familiar runtimes. |
+| **Open by default** | Public issue trackers and READMEs that are clear about what is not finished yet. Check each repository for its license. |
 
 ## Projects
 
@@ -95,8 +96,8 @@ them earns a spot here.
 
 **[parallax](https://github.com/henryj-dev/parallax)**  
 [![build](https://github.com/henryj-dev/parallax/actions/workflows/check.yml/badge.svg)](https://github.com/henryj-dev/parallax/actions/workflows/check.yml)
-![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/parallax?style=flat-square&color=0969da&label=)
-![Apache-2.0](https://img.shields.io/github/license/henryj-dev/parallax?style=flat-square&color=8250df&label=)
+![Top language](https://img.shields.io/github/languages/top/henryj-dev/parallax?style=flat-square&color=0969da&label=)
+![License](https://img.shields.io/github/license/henryj-dev/parallax?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -108,7 +109,7 @@ Split-horizon DNS control plane — one desired state for internal DNS and Cloud
 **[barycenter](https://github.com/henryj-dev/barycenter)**  
 [![build](https://github.com/henryj-dev/barycenter/actions/workflows/verify.yml/badge.svg)](https://github.com/henryj-dev/barycenter/actions/workflows/verify.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/barycenter?style=flat-square&color=0969da&label=)
-![Apache-2.0](https://img.shields.io/github/license/henryj-dev/barycenter?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/barycenter?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -120,7 +121,7 @@ A control plane for nginx — HTTP, TCP, and UDP reverse proxying and load balan
 **[heliopause](https://github.com/henryj-dev/heliopause)**  
 [![build](https://github.com/henryj-dev/heliopause/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/heliopause/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/heliopause?style=flat-square&color=0969da&label=)
-![Apache-2.0](https://img.shields.io/github/license/henryj-dev/heliopause?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/heliopause?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -132,7 +133,7 @@ A host firewall you can't lock yourself out of — declarative nftables with aut
 **[lodestar](https://github.com/henryj-dev/lodestar)**  
 [![build](https://github.com/henryj-dev/lodestar/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/lodestar/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/lodestar?style=flat-square&color=0969da&label=)
-![MIT](https://img.shields.io/github/license/henryj-dev/lodestar?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/lodestar?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -144,11 +145,23 @@ An open-source identity provider — one SvelteKit app, deployable to Cloudflare
 **[ionosphere](https://github.com/henryj-dev/ionosphere)**  
 [![build](https://github.com/henryj-dev/ionosphere/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/ionosphere/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/ionosphere?style=flat-square&color=0969da&label=)
-![MIT](https://img.shields.io/github/license/henryj-dev/ionosphere?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/ionosphere?style=flat-square&color=8250df&label=)
 
 </td><td>
 
 A mail server built from scratch — SMTP, IMAP, POP3, JMAP, ManageSieve, LMTP, zero runtime dependencies
+
+</td></tr>
+<tr><td>
+
+**[magnetosphere](https://github.com/henryj-dev/magnetosphere)**<br>
+[![build](https://github.com/henryj-dev/magnetosphere/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/magnetosphere/actions/workflows/ci.yml)
+![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/magnetosphere?style=flat-square&color=0969da&label=)
+![License](https://img.shields.io/github/license/henryj-dev/magnetosphere?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+OmniRoute member and usage layer — in development
 
 </td></tr>
 </table>
@@ -168,7 +181,7 @@ Smaller, standalone tools that don't need a control plane of their own:
 **[d1-jdbc](https://github.com/henryj-dev/d1-jdbc)**  
 [![build](https://github.com/henryj-dev/d1-jdbc/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/d1-jdbc/actions/workflows/ci.yml)
 ![Java](https://img.shields.io/github/languages/top/henryj-dev/d1-jdbc?style=flat-square&color=0969da&label=)
-![MIT](https://img.shields.io/github/license/henryj-dev/d1-jdbc?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/d1-jdbc?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -180,31 +193,41 @@ A JDBC driver for Cloudflare D1 — zero-dependency, REST API or self-deployed W
 **[whois2rdap](https://github.com/henryj-dev/whois2rdap)**  
 [![build](https://github.com/henryj-dev/whois2rdap/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/whois2rdap/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/whois2rdap?style=flat-square&color=0969da&label=)
-![MIT](https://img.shields.io/github/license/henryj-dev/whois2rdap?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/whois2rdap?style=flat-square&color=8250df&label=)
 
 </td><td>
 
 Converts WHOIS responses into RFC 9083 RDAP-shaped JSON
 
 </td></tr>
+<tr><td>
+
+**[dji-cellular-dongle-mac](https://github.com/henryj-dev/dji-cellular-dongle-mac)**<br>![Top language](https://img.shields.io/github/languages/top/henryj-dev/dji-cellular-dongle-mac?style=flat-square&color=0969da&label=)
+![License](https://img.shields.io/github/license/henryj-dev/dji-cellular-dongle-mac?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+Unofficial experimental project to use the DJI Cellular Dongle 2 as a macOS LTE modem
+
+</td></tr>
 </table>
 
 ## Upstream contributions
 
-Work in other people's projects, kept here as forks — merged unless noted otherwise:
+Work in other people's projects, kept here as forks — all listed pull requests have been merged:
 
 <table>
 <tr><th width="230">Repository</th><th>Pull requests</th></tr>
 <tr><td>
 
 **[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**  
-[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/mack-erel/workers-sdk)
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_cloudflare_workers-sdk)
 
 </td><td>
 
 - [#14712](https://github.com/cloudflare/workers-sdk/pull/14712): miniflare — support `connect()` on remote VPC Network bindings in local dev
-- [#14900](https://github.com/cloudflare/workers-sdk/pull/14900): miniflare — support remote Hyperdrive bindings in local dev *(open)*
-- [#15541](https://github.com/cloudflare/workers-sdk/pull/15541): remote bindings — retry the proactive preview token refresh after a transient failure *(open)*
+- [#14900](https://github.com/cloudflare/workers-sdk/pull/14900): miniflare — support remote Hyperdrive bindings in local dev
+- [#15541](https://github.com/cloudflare/workers-sdk/pull/15541): remote bindings — retry the proactive preview token refresh after a transient failure
 
 </td></tr>
 <tr><td>
@@ -255,5 +278,5 @@ these in anger and something is missing, an issue describing your setup is more
 useful than a feature request in the abstract.
 
 <div align="center">
-<sub>Apache-2.0 licensed · <a href="https://github.com/orgs/henryj-dev/repositories">all repositories</a></sub>
+<sub>Licenses vary by repository · <a href="https://github.com/orgs/henryj-dev/repositories">all repositories</a></sub>
 </div>

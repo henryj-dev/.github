@@ -11,8 +11,8 @@
 **시스템을 운영하는 도구를 만듭니다. 위험한 변경일수록 실수로 만들기 어렵도록.**
 
 <a href="https://github.com/orgs/henryj-dev/repositories"><img alt="Repositories" src="https://img.shields.io/badge/repositories-browse-0969da?style=flat-square&logo=github&logoColor=white"></a>
-<a href="https://www.typescriptlang.org/"><img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white"></a>
-<img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-8250df?style=flat-square">
+<a href="https://www.typescriptlang.org/"><img alt="일부 프로젝트에서 사용하는 TypeScript" src="https://img.shields.io/badge/TypeScript-selected%20projects-3178c6?style=flat-square&logo=typescript&logoColor=white"></a>
+<a href="https://github.com/orgs/henryj-dev/repositories"><img alt="저장소별 라이선스" src="https://img.shields.io/badge/license-per%20repository-8250df?style=flat-square"></a>
 <a href="#참여하기"><img alt="PRs Welcome" src="https://img.shields.io/badge/PR-환영-2da44e?style=flat-square"></a>
 
 <br>
@@ -36,7 +36,7 @@
 
 > 여기서 다루는 일은 대개 비슷하게 시작합니다. 중요한 무언가가 서버 어딘가에서 손으로 설정되어 있고, 왜 그렇게 되어 있는지는 그 작업을 한 사람만 알고 있는 상태. 이 프로젝트들은 그것을 읽고, 검토하고, 되돌릴 수 있는 형태로 바꿉니다.
 >
-> 주제가 무엇이든 같은 형태를 따릅니다. 원하는 상태를 선언하면, 도구가 무엇이 바뀔지 먼저 보여주고, 물러설 수 있는 방식으로 적용합니다.
+> 인프라 컨트롤 플레인은 원하는 상태를 선언하고 변경을 미리 본 뒤 되돌릴 수 있게 적용하는 것을 설계 목표로 삼습니다. 실제 지원 범위와 개발 단계는 프로젝트마다 다르며, 각 저장소 README에 안내합니다.
 
 ## 소개
 
@@ -47,9 +47,8 @@
 
 **장효찬 (Henry Jang)** · [@mack-erel](https://github.com/mack-erel)
 
-백엔드 / 인프라 엔지니어. 이 조직은 위 도구들이 README, 라이선스, 빌드 배지까지
-갖춰졌을 때 올라오는 자리입니다. 자잘한 스크립트나 그날그날의 실험은 개인
-계정에 남아있다가, 그중 하나가 여기 올 만큼 다듬어지면 옮겨옵니다.
+백엔드 / 인프라 엔지니어. 이 조직은 인프라 도구와 독립 프로젝트를 공개하며,
+각 저장소의 README에 범위와 개발 단계를 적습니다.
 
 [![Email](https://img.shields.io/badge/email-jang%40hyochan.site-24292f?style=flat-square&logo=gmail&logoColor=white)](mailto:jang@hyochan.site)
 [![Blog](https://img.shields.io/badge/blog-hyochan.site-8250df?style=flat-square&logo=rss&logoColor=white)](https://hyochan.site)
@@ -74,14 +73,16 @@
 
 ## 여기서 만드는 방식
 
+인프라 컨트롤 플레인의 설계 원칙입니다. 실제 지원 범위는 각 저장소 README에서 확인하세요.
+
 | 원칙 | 의미 |
 |---|---|
-| **명령이 아닌 desired state** | 무엇이 참이어야 하는지를 선언합니다. 조정은 도구의 몫이며, 자신이 관리하는 대상 외에는 건드리지 않습니다. |
-| **적용 전 계획** | 모든 변경은 미리 볼 수 있습니다. 무언가 움직이기 전에 영향 범위를 확인합니다. |
-| **구조적으로 안전하게** | 롤백 타이머, commit/confirm, 적용 후 검증. 사고를 내는 변경을 실수로 만들기 어렵게 설계합니다. |
-| **동등한 인터페이스** | GUI, API, CLI가 같은 제품입니다. 클릭으로만 되는 것도, 스크립트로만 되는 것도 없습니다. |
-| **가벼운 의존성** | 움직이는 부품을 줄이고, 익숙한 스택을 쓰며, 도입해야만 쓸 수 있는 런타임을 만들지 않습니다. |
-| **기본은 공개** | Apache-2.0, 공개 이슈 트래커, 그리고 아직 끝나지 않은 부분을 숨기지 않는 README. |
+| **명령이 아닌 desired state** | 원하는 상태를 선언하고, 도구가 자신이 관리하는 대상만 조정합니다. |
+| **적용 전 계획** | 변경 사항을 미리 본 뒤 적용합니다. |
+| **구조적으로 안전하게** | 롤백, commit/confirm, 적용 후 검증을 고려해 설계합니다. |
+| **동등한 인터페이스** | 제공하는 경우 GUI, API, CLI가 동등하게 작동하도록 합니다. |
+| **가벼운 의존성** | 의존성을 줄이고 익숙한 런타임을 씁니다. |
+| **기본은 공개** | 공개 이슈 트래커와 아직 끝나지 않은 부분을 분명히 밝히는 README. 라이선스는 각 저장소에서 확인하세요. |
 
 ## 프로젝트
 
@@ -90,8 +91,8 @@
 
 **[parallax](https://github.com/henryj-dev/parallax)**  
 [![build](https://github.com/henryj-dev/parallax/actions/workflows/check.yml/badge.svg)](https://github.com/henryj-dev/parallax/actions/workflows/check.yml)
-![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/parallax?style=flat-square&color=0969da&label=)
-![Apache-2.0](https://img.shields.io/github/license/henryj-dev/parallax?style=flat-square&color=8250df&label=)
+![Top language](https://img.shields.io/github/languages/top/henryj-dev/parallax?style=flat-square&color=0969da&label=)
+![License](https://img.shields.io/github/license/henryj-dev/parallax?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -103,7 +104,7 @@
 **[barycenter](https://github.com/henryj-dev/barycenter)**  
 [![build](https://github.com/henryj-dev/barycenter/actions/workflows/verify.yml/badge.svg)](https://github.com/henryj-dev/barycenter/actions/workflows/verify.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/barycenter?style=flat-square&color=0969da&label=)
-![Apache-2.0](https://img.shields.io/github/license/henryj-dev/barycenter?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/barycenter?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -115,7 +116,7 @@ nginx를 위한 컨트롤 플레인 — HTTP, TCP, UDP 리버스 프록시와 �
 **[heliopause](https://github.com/henryj-dev/heliopause)**  
 [![build](https://github.com/henryj-dev/heliopause/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/heliopause/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/heliopause?style=flat-square&color=0969da&label=)
-![Apache-2.0](https://img.shields.io/github/license/henryj-dev/heliopause?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/heliopause?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -127,7 +128,7 @@ nginx를 위한 컨트롤 플레인 — HTTP, TCP, UDP 리버스 프록시와 �
 **[lodestar](https://github.com/henryj-dev/lodestar)**  
 [![build](https://github.com/henryj-dev/lodestar/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/lodestar/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/lodestar?style=flat-square&color=0969da&label=)
-![MIT](https://img.shields.io/github/license/henryj-dev/lodestar?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/lodestar?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -139,11 +140,23 @@ nginx를 위한 컨트롤 플레인 — HTTP, TCP, UDP 리버스 프록시와 �
 **[ionosphere](https://github.com/henryj-dev/ionosphere)**  
 [![build](https://github.com/henryj-dev/ionosphere/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/ionosphere/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/ionosphere?style=flat-square&color=0969da&label=)
-![MIT](https://img.shields.io/github/license/henryj-dev/ionosphere?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/ionosphere?style=flat-square&color=8250df&label=)
 
 </td><td>
 
 처음부터 직접 만든 메일 서버 — SMTP·IMAP·POP3·JMAP·ManageSieve·LMTP, 런타임 의존성 0
+
+</td></tr>
+<tr><td>
+
+**[magnetosphere](https://github.com/henryj-dev/magnetosphere)**<br>
+[![build](https://github.com/henryj-dev/magnetosphere/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/magnetosphere/actions/workflows/ci.yml)
+![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/magnetosphere?style=flat-square&color=0969da&label=)
+![License](https://img.shields.io/github/license/henryj-dev/magnetosphere?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+OmniRoute 회원·사용량 관리 계층 — 개발 중
 
 </td></tr>
 </table>
@@ -162,7 +175,7 @@ nginx를 위한 컨트롤 플레인 — HTTP, TCP, UDP 리버스 프록시와 �
 **[d1-jdbc](https://github.com/henryj-dev/d1-jdbc)**  
 [![build](https://github.com/henryj-dev/d1-jdbc/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/d1-jdbc/actions/workflows/ci.yml)
 ![Java](https://img.shields.io/github/languages/top/henryj-dev/d1-jdbc?style=flat-square&color=0969da&label=)
-![MIT](https://img.shields.io/github/license/henryj-dev/d1-jdbc?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/d1-jdbc?style=flat-square&color=8250df&label=)
 
 </td><td>
 
@@ -174,31 +187,41 @@ Cloudflare D1용 JDBC 드라이버 — 의존성 0, REST API 또는 자체 배�
 **[whois2rdap](https://github.com/henryj-dev/whois2rdap)**  
 [![build](https://github.com/henryj-dev/whois2rdap/actions/workflows/ci.yml/badge.svg)](https://github.com/henryj-dev/whois2rdap/actions/workflows/ci.yml)
 ![TypeScript](https://img.shields.io/github/languages/top/henryj-dev/whois2rdap?style=flat-square&color=0969da&label=)
-![MIT](https://img.shields.io/github/license/henryj-dev/whois2rdap?style=flat-square&color=8250df&label=)
+![License](https://img.shields.io/github/license/henryj-dev/whois2rdap?style=flat-square&color=8250df&label=)
 
 </td><td>
 
 WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환
 
 </td></tr>
+<tr><td>
+
+**[dji-cellular-dongle-mac](https://github.com/henryj-dev/dji-cellular-dongle-mac)**<br>![Top language](https://img.shields.io/github/languages/top/henryj-dev/dji-cellular-dongle-mac?style=flat-square&color=0969da&label=)
+![License](https://img.shields.io/github/license/henryj-dev/dji-cellular-dongle-mac?style=flat-square&color=8250df&label=)
+
+</td><td>
+
+DJI Cellular Dongle 2를 macOS LTE 모뎀으로 쓰기 위한 비공식 실험 프로젝트
+
+</td></tr>
 </table>
 
 ## 오픈소스 기여
 
-다른 프로젝트에 남긴 작업, fork 형태로 남겨둠 (별도 표시 없으면 머지됨):
+다른 프로젝트에 남긴 작업, fork 형태로 남겨둠 (아래 PR은 모두 머지됨):
 
 <table>
 <tr><th width="230">저장소</th><th>PR</th></tr>
 <tr><td>
 
 **[cloudflare/workers-sdk](https://github.com/cloudflare/workers-sdk)**  
-[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/mack-erel/workers-sdk)
+[![fork](https://img.shields.io/badge/fork-here-24292f?style=flat-square&logo=github&logoColor=white)](https://github.com/henryj-dev/contribute_cloudflare_workers-sdk)
 
 </td><td>
 
 - [#14712](https://github.com/cloudflare/workers-sdk/pull/14712): miniflare — 원격 VPC Network 바인딩에서 로컬 개발 시 `connect()` 지원
-- [#14900](https://github.com/cloudflare/workers-sdk/pull/14900): miniflare — 원격 Hyperdrive 바인딩 로컬 개발 지원 *(진행 중)*
-- [#15541](https://github.com/cloudflare/workers-sdk/pull/15541): 원격 바인딩 — 일시적 실패 뒤 사전 프리뷰 토큰 갱신을 재시도 *(진행 중)*
+- [#14900](https://github.com/cloudflare/workers-sdk/pull/14900): miniflare — 원격 Hyperdrive 바인딩 로컬 개발 지원
+- [#15541](https://github.com/cloudflare/workers-sdk/pull/15541): 원격 바인딩 — 일시적 실패 뒤 사전 프리뷰 토큰 갱신을 재시도
 
 </td></tr>
 <tr><td>
@@ -247,5 +270,5 @@ WHOIS 응답을 RFC 9083 RDAP 형식 JSON으로 변환
 모든 저장소에서 이슈와 풀 리퀘스트를 환영합니다. 실제 운영 중에 부족한 점을 발견하셨다면, 추상적인 기능 요청보다 사용 환경을 설명한 이슈가 훨씬 도움이 됩니다.
 
 <div align="center">
-<sub>Apache-2.0 라이선스 · <a href="https://github.com/orgs/henryj-dev/repositories">전체 저장소</a></sub>
+<sub>라이선스는 저장소마다 다릅니다 · <a href="https://github.com/orgs/henryj-dev/repositories">전체 저장소</a></sub>
 </div>
